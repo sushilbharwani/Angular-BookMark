@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html ng-app="bookmarks">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.css' type='text/css' rel='stylesheet'  />
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<style>
+ul li{
+list-style-type:none;
+}
+</style>
+</head>
+<body ng-controller="MainCtrl">
+<div class='container'>
+<div class='row'>
+<div class='col-lg-3' style="background-color:#cccccc;">
+<a href='#' ng-click="setCurrentCategory('');" >Logo</a>
+</div>
+<div class='col-lg-8'>
+
+</div>
+</div>
+<div class='row'>
+<div class='col-lg-3' style="background-color:#cccccc;">
+<ul>
+<li ng-repeat="category in categories">
+<a ng-click='setCurrentCategory(category);' href="#" >{{category}}</a>
+</li>
+</ul>
+</div>
+<div class='col-lg-8'>
+	<ul>
+		<li ng-repeat="bookmarkItem in bookmarkItems | filter:{category:currentCategory}">
+		<i class='fa fa-edit'></i> <a ng-href={{bookmarkItem.url}}>{{bookmarkItem.title}}</a>
+		</li>
+	</ul>
+
+	<div ng-if="currentCategory!=''">
+		<a href='#'>Create Bookmark.</a>
+		<input type='text' placeholder='Enter BookMark Name' ng-model='bookmark.title'>
+		<input type='text' placeholder='Enter BookMark URL' ng-model='bookmark.url'>
+		<button class='btn btn-success' ng-click="addBookMarks(bookmark);">Add</button><button class='btn btn-warning'>Cancel</button>
+	</div>
+
+
+</div>
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular.min.js"></script>
+<script src="js/bookmark.js"></script>
+</body>
+</html>
