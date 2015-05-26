@@ -32,7 +32,7 @@ list-style-type:none;
 <div class='col-lg-8'>
 	<ul>
 		<li ng-repeat="bookmarkItem in bookmarkItems | filter:{category:currentCategory}">
-		<i class='fa fa-edit'></i> <a ng-href={{bookmarkItem.url}}>{{bookmarkItem.title}}</a>
+		<a class='fa fa-edit'></a> <a ng-href={{bookmarkItem.url}}>{{bookmarkItem.title}}</a>
 		</li>
 	</ul>
 
