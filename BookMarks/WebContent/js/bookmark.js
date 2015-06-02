@@ -14,6 +14,9 @@ angular.module('bookmarks',[])
 	];
 	
 	$scope.currentCategory = '';
+	$scope.isEditing = false;
+	$scope.isCreating = true;
+	$scope.editedBokmark = null;
 	
 	function setCurrentCategory(category){
 			
@@ -25,6 +28,8 @@ angular.module('bookmarks',[])
 					
 			};
 			$scope.currentCategory = category;
+			$scope.isEditing = false;
+			$scope.isCreating = true;
 	}
 	
 	function addBookMarks(bookmark){
@@ -38,6 +43,26 @@ angular.module('bookmarks',[])
 				
 	}
 	
+	function editBookMark(bookmarkItem){
+		$scope.isEditing = true;
+		$scope.isCreating = false;
+		
+		$scope.editedBokmark = 	angular.copy(bookmarkItem);
+		
+		//console.log(bookmarkItem);
+		
+	}
+	
+	
+	function updateBookMark(bookmarkItem){
+		
+		console.log(bookmarkItem);
+		
+		
+	}
+	
 	$scope.setCurrentCategory = setCurrentCategory;
 	$scope.addBookMarks = addBookMarks;
+	$scope.editBookMark = editBookMark;
+	$scope.updateBookMark = updateBookMark;
 })
